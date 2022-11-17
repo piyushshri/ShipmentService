@@ -14,7 +14,7 @@ public class ShipmentController {
     @Autowired
     ShipmentService shipmentservice;
 
-    @GetMapping("/shipment/${id}/status")
+    @GetMapping("/shipment/{id}/status")
     public ResponseEntity getShipment(@PathVariable String id){
         try {
             String status = shipmentservice.getStatus(id);

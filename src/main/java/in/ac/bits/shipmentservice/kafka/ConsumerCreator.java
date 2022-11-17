@@ -42,6 +42,7 @@ public class ConsumerCreator {
             }
 
             consumerRecords.forEach(record -> {
+                System.out.println("Order received from Kafka: "+record.value());
                 OrderDetails orderDetails = new Gson().fromJson(record.value(), OrderDetails.class);
                 shipmentservice.handleOrder(orderDetails);
             });

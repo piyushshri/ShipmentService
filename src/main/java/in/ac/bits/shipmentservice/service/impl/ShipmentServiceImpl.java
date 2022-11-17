@@ -23,6 +23,8 @@ public class ShipmentServiceImpl implements ShipmentService {
         shipment.setDate(Instant.now().toString());
         shipment.setOrderDetails(new Gson().toJson(orderDetails));
         shipment.setStatus("REGISTERED");
+        saveShipmentToDB(shipment);
+        System.out.println("Shipment successfully created");
     }
 
     @Override
@@ -33,5 +35,9 @@ public class ShipmentServiceImpl implements ShipmentService {
         } else {
             throw new NoSuchMethodException("Shipment not found");
         }
+    }
+
+    private void saveShipmentToDB(Shipments shipment) {
+        shipmentsRepository.save(shipment);
     }
 }
